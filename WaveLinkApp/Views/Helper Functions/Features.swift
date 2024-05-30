@@ -40,7 +40,7 @@ struct Features: View {
                         .padding()
 
                     Button(action: {
-//                        $model.sendCom1State(message)
+                        model.sendCom1State(message)
                     }) {
                         Text("Send Message")
                             .foregroundColor(.white)
