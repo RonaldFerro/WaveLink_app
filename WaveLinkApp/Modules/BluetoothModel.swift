@@ -176,16 +176,29 @@ class BluetoothModel: NSObject, ObservableObject, CBCentralManagerDelegate, CBPe
     func sendCom6State(_ value: String) {
         writeValue(value, for: "ledCom6")
     }
+    
+    
+    // compute the hash value of the message
+    func calculateXORHash(for value: String) -> UInt8{
+        let bytes = Array(value.utf8)
+        var hash: UInt8 = 0x00
+        
+        for byte in bytes {
+            hash ^= byte
+        }
+        
+        return hash
+    }
 
     func writeValue(_ value: String, for key: String) {
         guard let characteristic = characteristics[key] else { return }
         
         // Define the structure
-        let startToken: UInt8 = 0x02 // Example start token, you can change this as needed
+        let startToken: UInt8 = 0xAA // Example start token, you can change this as needed
         let messageId: UInt8 = 0x01 // Example ID, you can change this as needed
         let messageBytes = Array(value.utf8)
-        let messageLength: UInt8 = UInt8(min(messageBytes.count, 10))
-        let messageHash: UInt8 = UInt8(value.hash & 0xFF)
+        let messageLength: UInt8 = UInt8(min(messageBytes.count, 15))
+        let messageHash: UInt8 = calculateXORHash(for: value)
         
         // Create the packet
         var packet = [UInt8]()
