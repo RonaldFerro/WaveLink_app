@@ -20,6 +20,7 @@ struct ProfileEditor: View {
                     Section("Upload Image"){
                         NavigationLink("Pick an Image"){
                              ImagePicked()
+                                .environmentObject(profile)
                         }
                     }
                 }

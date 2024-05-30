@@ -11,13 +11,16 @@ struct ProfilePicture: View {
     @EnvironmentObject var profile: Profile
     
     var body: some View {
-       Image("Website-Header")
-            .imageScale(.small)
-            .clipShape(Circle())
-            .overlay {
-                Circle().stroke(.black, lineWidth: 4)
-                    .shadow(radius: 10)
-            }
+        if let image = profile.image {
+            image
+                .resizable()
+                .imageScale(.small)
+                .clipShape(Circle())
+                .overlay {
+                    Circle().stroke(.black, lineWidth: 4)
+                        .shadow(radius: 10)
+                }
+        }
     }
 }
 #Preview {

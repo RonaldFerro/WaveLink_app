@@ -23,11 +23,11 @@ struct BLeList: View {
                 Text("Toggle Switch to check if Watch is paired")
                     .padding()
                     .offset(y:-180)
-                Toggle("LED", isOn: $model.ledState)
-                    .onChange(of: model.ledState) { oldValue, newValue in
-                        model.sendLedState()
-                    }.offset(y:-160)
-                    .frame(width: 150)
+//                Toggle("LED", isOn: $model.ledState)
+//                    .onChange(of: model.ledState) { oldValue, newValue in
+//                        model.sendLedState()
+//                    }.offset(y:-160)
+//                    .frame(width: 150)
                 Text("Middle LED on watch will turn on/off with toggle")
                     .offset(y:-120)
             }

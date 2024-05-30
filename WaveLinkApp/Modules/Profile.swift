@@ -23,4 +23,7 @@ class Profile: ObservableObject {
             nil
         }
     }
+    func setPfp(image: Image){
+        profilePic = image.asUIImage().pngData()
+    }
 }

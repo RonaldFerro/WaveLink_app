@@ -9,13 +9,12 @@ import SwiftUI
 import Foundation
 
 func setAlternateIconName(_ alternateIconName: String?) async throws {
-    let alternateIconName = "ICON1"
 }
 
 struct HomePage: View {
     @StateObject var profile = Profile()
     var body: some View {
-        NavigationSplitView {
+        NavigationView {
             List{
                 NavigationLink {
                     ProfileHost()
@@ -41,11 +40,11 @@ struct HomePage: View {
                 } label: {
                     Text("Friends")
                 }
-            }            
+                HomePicture()
+            }
             .navigationTitle("Welcome to WaveLink")
-            HomePicture()
-        } detail: {
-            Text("")
+           
+        
         }
         
     }
